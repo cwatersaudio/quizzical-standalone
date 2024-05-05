@@ -2,9 +2,9 @@ import React from 'react'
 import { QuestionContext } from './QuizPage'
 
 
-const Options = ({ number, correct }) => {
+const Options = ({ number, correct, allChoices }) => {
 
-    const { updateAnswer, showAnswers, allChoices, answers } = React.useContext(QuestionContext)
+    const { updateAnswer, showAnswers, answers } = React.useContext(QuestionContext)
 
     const [selected, setSelected] = React.useState(null)
 

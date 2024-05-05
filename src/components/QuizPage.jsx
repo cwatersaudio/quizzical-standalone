@@ -24,9 +24,9 @@ const QuizPage = ({ triviaSet, begun, restartGame }) => {
                 question={item}
                 number={index}
                 key={item.id}
-            // updateAnswer={updateAnswer}
-            // showAnswers={showAnswers}
-            // allChoices={allChoices}
+                // updateAnswer={updateAnswer}
+                // showAnswers={showAnswers}
+                allChoices={allChoices}
             // answers={answers}
 
             />
@@ -61,7 +61,7 @@ const QuizPage = ({ triviaSet, begun, restartGame }) => {
 
 
     return (
-        <QuestionContext.Provider value={{ updateAnswer, showAnswers, allChoices, answers }}>
+        <QuestionContext.Provider value={{ updateAnswer, showAnswers, answers }}>
             <div className="quiz-container">
                 <form action="">
                     {questionsUI}

@@ -2,20 +2,20 @@ import React from 'react'
 import Options from './Options'
 import Option from './Option'
 
-// const Question = ({ allChoices, question, number, updateAnswer, showAnswers }) => {
-const Question = (props) => {
+const Question = ({ allChoices, question, number }) => {
+
 
 
     return (
         <div className={"question--container"}>
-            <p className="question">{props.question.questionText}</p>
+            <p className="question">{question.questionText}</p>
             <div className="choices">
 
                 <Options
-                    // allChoices={allChoices}
-                    number={props.number}
-                    correct={props.question.correct}
-                    id={props.question.id}
+                    allChoices={allChoices}
+                    number={number}
+                    correct={question.correct}
+                    id={question.id}
                 // updateAnswer={updateAnswer}
                 // showAnswers={showAnswers}
                 />
