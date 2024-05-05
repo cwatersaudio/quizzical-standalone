@@ -1,6 +1,11 @@
 import React from 'react'
+import { QuestionContext } from './QuizPage'
 
-const Options = ({ allChoices, number, correct, updateAnswer, showAnswers }) => {
+
+const Options = ({ number, correct }) => {
+
+    const { updateAnswer, showAnswers, allChoices, answers } = React.useContext(QuestionContext)
+
     const [selected, setSelected] = React.useState(null)
 
     function handleSelect(event, i) {

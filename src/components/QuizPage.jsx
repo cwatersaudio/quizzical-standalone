@@ -1,5 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import Question from './Question'
+
+const QuestionContext = React.createContext()
 
 
 const QuizPage = ({ triviaSet, begun, restartGame }) => {
@@ -13,6 +15,7 @@ const QuizPage = ({ triviaSet, begun, restartGame }) => {
 
     }
 
+
     const questionsUI = triviaSet.map((item, index) => {
         const allChoices = [...item.options] //had to spread 'options' in otherwise allChoices was being equated to 'options'
         allChoices.splice((allChoices.length + 1) * Math.random() | 0, 0, item.correct) //inserts correct answer at random index
@@ -21,10 +24,10 @@ const QuizPage = ({ triviaSet, begun, restartGame }) => {
                 question={item}
                 number={index}
                 key={item.id}
-                updateAnswer={updateAnswer}
-                showAnswers={showAnswers}
-                allChoices={allChoices}
-                answers={answers}
+            // updateAnswer={updateAnswer}
+            // showAnswers={showAnswers}
+            // allChoices={allChoices}
+            // answers={answers}
 
             />
 
@@ -58,31 +61,34 @@ const QuizPage = ({ triviaSet, begun, restartGame }) => {
 
 
     return (
-        <div className="quiz-container">
-            <form action="">
-                {questionsUI}
-                {!showAnswers ?
-                    <button
-                        type="button"
-                        className="quiz-button"
-                        onClick={() => checkAnswers(answers)}>Check Answers
-                    </button> :
-                    <div className='lower-button-container'>
-                        <p>You got {numberRight}/{triviaSet.length} correct!</p>
-                        <button type="button"
+        <QuestionContext.Provider value={{ updateAnswer, showAnswers, allChoices, answers }}>
+            <div className="quiz-container">
+                <form action="">
+                    {questionsUI}
+                    {!showAnswers ?
+                        <button
+                            type="button"
                             className="quiz-button"
-                            onClick={restartGame}
-                        >Play Again
-                        </button>
-                    </div>}
+                            onClick={() => checkAnswers(answers)}>Check Answers
+                        </button> :
+                        <div className='lower-button-container'>
+                            <p>You got {numberRight}/{triviaSet.length} correct!</p>
+                            <button type="button"
+                                className="quiz-button"
+                                onClick={restartGame}
+                            >Play Again
+                            </button>
+                        </div>}
 
-            </form>
+                </form>
 
 
-        </div >
+            </div >
+        </QuestionContext.Provider>
 
     )
 }
 
 export default QuizPage
+export { QuestionContext }
 
