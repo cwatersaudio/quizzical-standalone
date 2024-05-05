@@ -1,9 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createContext } from 'react'
 import { decode } from 'he'
 import './App.css'
 import QuizPage from './components/QuizPage'
 import IntroPage from './components/IntroPage'
 import { nanoid } from 'nanoid'
+
+const IntroContext = createContext()
+
 function App() {
   const [begun, setBegun] = useState(false) //state for whether the game has begun
   const [triviaSet, setTriviaSet] = useState([])
@@ -28,8 +31,7 @@ function App() {
     const fetchURL = `https://opentdb.com/api.php?amount=${params.number}&category=${params.category}${params.difficulty !== '' ? `&difficulty=${params.difficulty}` : ''}&type=multiple`
     const res = await fetch(fetchURL)
     const data = await res.json()
-    console.log(data)
-    console.log(fetchURL)
+
     const trivia = data.results.map(question => {
       const { correct_answer, incorrect_answers } = question
       return {
@@ -55,11 +57,13 @@ function App() {
 
     <div className='app--canvas'>
       {!begun ?
-        <IntroPage
-          getTrivia={getTrivia}
-          handleParamsChange={handleParamsChange}
-          params={params}
-        />
+        <IntroContext.Provider value={{ params, handleParamsChange, getTrivia }}>
+          <IntroPage
+          // getTrivia={getTrivia}
+          // handleParamsChange={handleParamsChange}
+          // params={params}
+          />
+        </IntroContext.Provider>
         :
         <QuizPage
           triviaSet={triviaSet}
@@ -73,3 +77,5 @@ function App() {
 }
 
 export default App
+
+export { IntroContext }

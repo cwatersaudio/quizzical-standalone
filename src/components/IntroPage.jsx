@@ -1,16 +1,14 @@
 import React from 'react'
 import QuizParams from './QuizParams'
 
-const IntroPage = ({ params, handleParamsChange, getTrivia }) => {
+
+const IntroPage = (props) => {
 
     return (
         <div className="intro-page">
             <h1 >Quizzical</h1>
             <h3 >Some description if needed</h3>
             <QuizParams
-                params={params}
-                handleParamsChange={handleParamsChange}
-                getTrivia={getTrivia}
             />
 
 

@@ -1,9 +1,11 @@
 import React from 'react'
 import Dropdown from './Dropdown'
+import { IntroContext } from '../App'
 
-const QuizParams = ({ handleParamsChange, params, getTrivia }) => {
+const QuizParams = (props) => {
     const [quizTopics, setQuizTopics] = React.useState([])
 
+    const { params, handleParamsChange, getTrivia } = React.useContext(IntroContext)
 
     async function getTopics() {
         const res = await fetch('https://opentdb.com/api_category.php')
