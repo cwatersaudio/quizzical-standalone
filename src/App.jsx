@@ -2,8 +2,8 @@ import { useState, useEffect, createContext } from 'react'
 import { decode } from 'he'
 import './App.css'
 import QuizPage from './components/QuizPage'
-import IntroPage from './components/IntroPage'
 import { nanoid } from 'nanoid'
+import QuizParams from './components/QuizParams'
 
 const IntroContext = createContext()
 
