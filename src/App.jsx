@@ -58,11 +58,13 @@ function App() {
     <div className='app--canvas'>
       {!begun ?
         <IntroContext.Provider value={{ params, handleParamsChange, getTrivia }}>
-          <IntroPage
-          // getTrivia={getTrivia}
-          // handleParamsChange={handleParamsChange}
-          // params={params}
-          />
+          <div className="intro-page">
+            <h1 >Quizzical</h1>
+            <h3 >Some description if needed</h3>
+
+            <QuizParams />
+
+          </div>
         </IntroContext.Provider>
         :
         <QuizPage

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React from 'react'
 import Question from './Question'
 
 const QuestionContext = React.createContext()
@@ -24,11 +24,7 @@ const QuizPage = ({ triviaSet, begun, restartGame }) => {
                 question={item}
                 number={index}
                 key={item.id}
-                // updateAnswer={updateAnswer}
-                // showAnswers={showAnswers}
                 allChoices={allChoices}
-            // answers={answers}
-
             />
 
         )
