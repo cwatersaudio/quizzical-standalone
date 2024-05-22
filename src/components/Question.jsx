@@ -2,7 +2,7 @@ import React from 'react'
 import Options from './Options'
 import Option from './Option'
 
-const Question = ({ allChoices, question, number }) => {
+const Question = ({ question, children }) => {
 
 
 
@@ -11,14 +11,7 @@ const Question = ({ allChoices, question, number }) => {
             <p className="question">{question.questionText}</p>
             <div className="choices">
 
-                <Options
-                    allChoices={allChoices}
-                    number={number}
-                    correct={question.correct}
-                    id={question.id}
-                // updateAnswer={updateAnswer}
-                // showAnswers={showAnswers}
-                />
+                {children}
             </div>
             <hr />
         </div>

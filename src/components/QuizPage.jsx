@@ -1,5 +1,6 @@
 import React from 'react'
 import Question from './Question'
+import Options from './Options'
 
 const QuestionContext = React.createContext()
 
@@ -21,11 +22,16 @@ const QuizPage = ({ triviaSet, begun, restartGame }) => {
         allChoices.splice((allChoices.length + 1) * Math.random() | 0, 0, item.correct) //inserts correct answer at random index
         return (
             <Question
-                question={item}
-                number={index}
                 key={item.id}
-                allChoices={allChoices}
-            />
+                question={item}
+            >
+                <Options
+                    allChoices={allChoices}
+                    number={index}
+                    correct={item.correct}
+                    id={item.id}
+                />
+            </Question>
 
         )
     })
