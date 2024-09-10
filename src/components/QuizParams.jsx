@@ -39,7 +39,6 @@ const QuizParams = (props) => {
 
     return (
         <form className='quiz-params'
-        // onSubmit={getTrivia}
         >
             <div className='number-param param'>
                 <label htmlFor="numberOfQuestions">How many questions?</label>

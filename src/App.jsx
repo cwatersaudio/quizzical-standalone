@@ -60,7 +60,7 @@ function App() {
         <IntroContext.Provider value={{ params, handleParamsChange, getTrivia }}>
           <div className="intro-page">
             <h1 >Quizzical</h1>
-            <h3 >Some description if needed</h3>
+            <h3 >Are you ready for some trivia?</h3>
 
             <QuizParams />
 
