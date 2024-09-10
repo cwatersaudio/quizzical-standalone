@@ -59,7 +59,7 @@
     border-radius: 15px;
     height: 52px;
     font-size: 18px;
-    position: relative;
+    /* position: relative; */
     width: 193px;
     border: none;
     align-self: center;
@@ -157,7 +157,11 @@
     background: orange;
 }
 
-
+.quiz-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 .lower-button-container {
     display: flex;

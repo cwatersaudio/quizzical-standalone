@@ -63,24 +63,29 @@ const QuizPage = ({ triviaSet, begun, restartGame }) => {
 
 
     return (
-        <QuestionContext.Provider value={{ updateAnswer, showAnswers, answers }}>
+        <QuestionContext.Provider value={{ updateAnswer, showAnswers, answers, restartGame }}>
             <div className="quiz-container">
                 <form action="">
-                    {questionsUI}
-                    {!showAnswers ?
-                        <button
-                            type="button"
-                            className="quiz-button"
-                            onClick={() => checkAnswers(answers)}>Check Answers
-                        </button> :
-                        <div className='lower-button-container'>
-                            <p>You got {numberRight}/{triviaSet.length} correct!</p>
-                            <button type="button"
+                    <div className='quiz-questions'>
+                        {questionsUI}
+                    </div>
+                    <div className='quiz-buttons'>
+                        {!showAnswers ?
+                            <button
+                                type="button"
                                 className="quiz-button"
-                                onClick={restartGame}
-                            >Play Again
-                            </button>
-                        </div>}
+                                onClick={() => checkAnswers(answers)}>Check Answers
+                            </button> :
+                            <div className='lower-button-container'>
+                                <p>You got {numberRight}/{triviaSet.length} correct!</p>
+                                <button type="button"
+                                    className="quiz-button"
+                                    onClick={restartGame}
+                                >Play Again
+                                </button>
+                            </div>}
+                    </div>
+
 
                 </form>
 
